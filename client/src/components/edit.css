@@ -1,0 +1,28 @@
+form {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form > input {
+    width: 200px;
+    height: 30px;
+    padding: 0 5px;
+    outline: none;
+    border: 1px solid black;
+    border-radius: 5px ;
+    margin: 5px 0;
+    background: none;
+}
+input[type = 'submit'] {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+input[type = 'submit']:hover {
+    background: none;
+    color: black;
+}
