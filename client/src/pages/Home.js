@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Edit } from "../components/edit";
 import "./home.css";
 import "../components/card.css";
-import { GetAll } from "../redux/actions/countriesAction";
+import { DeleteCountryAction, GetAll } from "../redux/actions/countriesAction";
 import { Loading } from "../components/Loading";
-export const Home = () => {
+import { useNavigate } from "react-router";
+export const Home = ({location}) => {
   const GetReducer = useSelector(state => state.GetReducer);
   const { loading, error, countries } = GetReducer;
-  console.log(countries)
+ const nav = useNavigate()
   const dispatch = useDispatch();
   useEffect(
     () => {
@@ -16,6 +17,10 @@ export const Home = () => {
     },
     [dispatch]
   );
+const HandleDelete = (id) => {
+  dispatch(DeleteCountryAction(id))
+  nav(0)
+}
   return (
     <div>
       <section className="board">
@@ -39,7 +44,7 @@ export const Home = () => {
                    <div />
                    <div className="right">
                      <div className="update">update</div>
-                     <div className="delete">delete</div>
+                     <div className="delete" onClick={() =>HandleDelete(item._id)}>delete</div>
                   
                    </div>
                  </div>
@@ -52,7 +57,7 @@ export const Home = () => {
                  </div>
                </div>
    
-              ))}
+              ))  }
           </div>
           <div className="space" />
           <div className="edit">

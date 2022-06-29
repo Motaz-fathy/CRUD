@@ -12,6 +12,7 @@ const  App =() =>{
 
    
       <Route path="/" element={<Home/>} exact></Route>
+      <Route path="/:id" element={<Home/>} exact></Route>
       
       </Routes>
 

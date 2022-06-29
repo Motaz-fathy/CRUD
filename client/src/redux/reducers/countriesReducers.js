@@ -30,13 +30,29 @@ export const GetReducer = (state = { countries: [] }, action) => {
 // create country reducer 
 
 export const countryCreateReducer = (state = {}, action) => {
+  console.log(action.payload)
   switch (action.type) {
     case LODDING_ADD_DATA:
       return { loading: true };
     case SUCCESS_ADD_DATA:
       return { loading: false, success: true, country: action.payload };
     case ERROR_ADD_DATA:
-      return { loading: false, error: action.payload };
+      return { loading: false, error: action.payload.message };
+    default:
+      return state;
+  }
+};
+
+// delete country reducer 
+
+export const countryDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case LODDING_DELETE_DATA:
+      return { loading: true };
+    case SUCCESS_DELETE_DATA:
+      return { loading: false, success: true , country: action.payload};
+    case ERROR_DELETE_DATA:
+      return { loading: false, error: action.payload.message };
     default:
       return state;
   }
