@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./edit.css";
-import { CreatecountryAction } from "../redux/actions/countriesAction";
-export const Edit = () => {
+import { CreatecountryAction, UpdateCountryAction } from "../redux/actions/countriesAction";
+export const Edit = ({Singlecountry}) => {
   const dispatch = useDispatch();
   const nav = useNavigate();
   const [domains, setDomains] = useState("");
@@ -25,9 +25,13 @@ export const Edit = () => {
     resetHandler();
     nav("/");
   };
+  const handleUpdate = () => {
+    dispatch(UpdateCountryAction(Singlecountry._id,{domains, country, name, code, link}))
+    nav(0)
+  }
   return (
     <div>
-      <form onSubmit={handelcreate}>
+      <form >
         <input
           type={"text"}
           placeholder="domain"
@@ -37,24 +41,29 @@ export const Edit = () => {
           type={"text"}
           placeholder="country"
           onChange={e => setCountry(e.target.value)}
+
         />
         <input
           type={"text"}
           placeholder="name"
           onChange={e => setName(e.target.value)}
+
         />
         <input
           type={"text"}
           placeholder="code"
           onChange={e => setCode(e.target.value)}
+
         />
         <input
           type={"text"}
           placeholder="web_page"
           onChange={e => setLink(e.target.value)}
+
         />
 
-        <input type={"submit"} value="Add" />
+        <input type={"submit"} value="Add" onClick={handelcreate}/>
+        <input type={"submit"} value="Update" onClick={handleUpdate} />
       </form>
     </div>
   );

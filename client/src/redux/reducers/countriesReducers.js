@@ -10,11 +10,13 @@ import {
   ERROR_UPDATE_DATA,  
   SUCCESS_DELETE_DATA,
   LODDING_DELETE_DATA,
-  ERROR_DELETE_DATA
+  ERROR_DELETE_DATA,
+  SUCCESS_GET_SINGLE,
+  LODDING_GET_SINGLE,
+  ERROR_GET_SINGLE
 } from "../actions/types";
-
+// get all countries
 export const GetReducer = (state = { countries: [] }, action) => {
-    console.log(action.payload)
   switch (action.type) {
     case LODDING_GET_DATA:
       return { loading: true, countries: [] };
@@ -26,11 +28,22 @@ export const GetReducer = (state = { countries: [] }, action) => {
       return state;
   }
 };
-
+// get single countries
+export const GetSingleReducer = (state = { Singlecountry : {}}, action) => {
+switch (action.type) {
+  case LODDING_GET_SINGLE:
+    return { ...state, loading: true };
+  case SUCCESS_GET_SINGLE:
+    return { loding: false, Singlecountry : action.payload };
+  case ERROR_GET_SINGLE:
+    return { loading: false, error: action.payload.message };
+  default:
+    return state;
+}
+};
 // create country reducer 
 
 export const countryCreateReducer = (state = {}, action) => {
-  console.log(action.payload)
   switch (action.type) {
     case LODDING_ADD_DATA:
       return { loading: true };
@@ -47,6 +60,21 @@ export const countryCreateReducer = (state = {}, action) => {
 
 export const countryDeleteReducer = (state = {}, action) => {
   switch (action.type) {
+    case LODDING_UPDATE_DATA:
+      return { loading: true };
+    case SUCCESS_UPDATE_DATA:
+      return { loading: false, success: true , country: action.payload};
+    case ERROR_UPDATE_DATA:
+      return { loading: false, error: action.payload.message };
+    default:
+      return state;
+  }
+};
+
+// delete country reducer 
+
+export const countryUpdateReducer = (state = {}, action) => {
+  switch (action.type) {
     case LODDING_DELETE_DATA:
       return { loading: true };
     case SUCCESS_DELETE_DATA:
@@ -57,3 +85,5 @@ export const countryDeleteReducer = (state = {}, action) => {
       return state;
   }
 };
+
+

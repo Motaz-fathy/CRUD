@@ -3,10 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Edit } from "../components/edit";
 import "./home.css";
 import "../components/card.css";
-import { DeleteCountryAction, GetAll } from "../redux/actions/countriesAction";
+import { DeleteCountryAction, GetAll, GetSingleAction } from "../redux/actions/countriesAction";
 import { Loading } from "../components/Loading";
 import { useNavigate } from "react-router";
-export const Home = ({location}) => {
+import Search from "../components/Search";
+export const Home = () => {
   const GetReducer = useSelector(state => state.GetReducer);
   const { loading, error, countries } = GetReducer;
  const nav = useNavigate()
@@ -21,6 +22,12 @@ const HandleDelete = (id) => {
   dispatch(DeleteCountryAction(id))
   nav(0)
 }
+const HandleUpdate = (id) => {
+dispatch(GetSingleAction(id))
+
+}
+const GetSingleReducer = useSelector(state => state.GetSingleReducer) 
+const {Singlecountry} = GetSingleReducer
   return (
     <div>
       <section className="board">
@@ -28,6 +35,7 @@ const HandleDelete = (id) => {
           <div className="logo">CRUD</div>
           <div className="links">motazfathy7@gmail.com</div>
         </div>
+        <Search />
         <div className="homecontainer">
           <div className="datashow">
             {loading && <Loading />}
@@ -43,7 +51,7 @@ const HandleDelete = (id) => {
                    </div>
                    <div />
                    <div className="right">
-                     <div className="update">update</div>
+                     <div className="update" onClick={() =>HandleUpdate(item._id)}>update</div>
                      <div className="delete" onClick={() =>HandleDelete(item._id)}>delete</div>
                   
                    </div>
@@ -61,7 +69,7 @@ const HandleDelete = (id) => {
           </div>
           <div className="space" />
           <div className="edit">
-            <Edit />
+            <Edit Singlecountry={Singlecountry}/>
           </div>
         </div>
       </section>

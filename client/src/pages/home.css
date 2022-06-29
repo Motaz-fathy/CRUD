@@ -1,8 +1,7 @@
 .board {
     width: 100%;
     height: auto;
-    background: rgb(34,5,75);
-    background: radial-gradient(circle, rgba(34,5,75,1) 26%, rgba(25,2,61,1) 100%);
+   background-color: #f3f2f2;
 }
 .header {
     width: 100%;
@@ -34,9 +33,13 @@
     width: 10%;
 }
 .homecontainer .edit {
+    margin-top: 50px;
     width: 30%;
     height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }

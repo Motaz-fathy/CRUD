@@ -10,6 +10,14 @@ countries.GetAll = async (req, res) => {
     res.status(400).json({ message: "server interupted" });
   }
 };
+countries.GetSingle = async (req, res) => {
+  try {
+    const Singlecountry = await Countrie.findOne({_id : req.params.id});
+    res.status(201).json(Singlecountry);
+  } catch (error) {
+    res.status(400).json({ message: "server interupted" });
+  }
+};
 
 countries.Add = async (req, res) => {
   const { domains, country, name, code, link } = req.body;
@@ -62,4 +70,7 @@ countries.Delete = async (req , res ) => {
 
  }
 }
+
+
+
 module.exports = countries;
