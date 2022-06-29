@@ -4,19 +4,24 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 
 form > input {
-    width: 200px;
-    height: 30px;
+    width: 250px;
+    height: 35px;
     padding: 0 5px;
     outline: none;
-    border: 1px solid black;
+    border: 1px solid #390e7a;
     border-radius: 5px ;
     margin: 5px 0;
-    background: none;
+    background-color: #100322;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 input[type = 'submit'] {
+    width: 260px;
+    height: 35px;
     background-color: black;
     color: white;
     cursor: pointer;

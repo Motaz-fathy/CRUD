@@ -1,7 +1,8 @@
 .board {
     width: 100%;
     height: auto;
-    background-color: #f3f2f2;
+    background: rgb(34,5,75);
+    background: radial-gradient(circle, rgba(34,5,75,1) 26%, rgba(25,2,61,1) 100%);
 }
 .header {
     width: 100%;
@@ -20,12 +21,14 @@
     height: auto;
     display: flex;
     justify-content: space-around;
-    align-items: center;
 }
 .homecontainer .datashow { 
-    background-color: black;
+    margin-top: 40px;
     width: 60%;
-    height: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .homecontainer .space{
     width: 10%;

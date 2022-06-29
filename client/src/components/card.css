@@ -1,5 +1,44 @@
 .body_card {
     width: 100%;
-    height: 150px;
-    position: relative ;    
+    height: auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-bottom: 20px;
+}
+.body_card .head {
+    width: 100%;
+    height: 50px;
+    background-color: #100322;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+.body_card .head .left {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+.body_card .head .right {
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+.body_card .body_show {
+   width: 100%;
+   height: 150px;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+
+}
+.body_card .body_show > h5 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+color: white;
+font-size: 14px;
+margin-left: 10px;
+margin-top: 10px;
 }
