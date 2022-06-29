@@ -5,18 +5,19 @@ import "./home.css";
 import "../components/card.css";
 import { DeleteCountryAction, GetAll, GetSingleAction } from "../redux/actions/countriesAction";
 import { Loading } from "../components/Loading";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import Search from "../components/Search";
 export const Home = () => {
+  const {keyword } = useParams()
   const GetReducer = useSelector(state => state.GetReducer);
   const { loading, error, countries } = GetReducer;
  const nav = useNavigate()
   const dispatch = useDispatch();
   useEffect(
     () => {
-      dispatch(GetAll());
+      dispatch(GetAll(keyword));
     },
-    [dispatch]
+    [dispatch ,keyword]
   );
 const HandleDelete = (id) => {
   dispatch(DeleteCountryAction(id))

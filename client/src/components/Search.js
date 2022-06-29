@@ -14,7 +14,6 @@ const Search = () => {
       nav(`/`);
     }
   };
-  console.log(keyword)
 
   return (
     <div className="container">
@@ -23,7 +22,7 @@ const Search = () => {
           onChange={(e) => setKeyword(e.target.value) }
           className="search"
           type="search"
-          placeholder="Search by product name ..."
+          placeholder="Search by country name ..."
         />
         <i className="fa fa-search" aria-hidden="true"></i>
       </form>

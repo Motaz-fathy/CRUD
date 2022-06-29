@@ -17,11 +17,11 @@ import {
   ERROR_GET_SINGLE
 } from "./types";
 
-export const GetAll = () => async dispatch => {
+export const GetAll = (keyword = " ") => async dispatch => {
   try {
     dispatch({ type: LODDING_GET_DATA });
 
-    const { data } = await axios.get("http://localhost:8000");
+    const { data } = await axios.get(`http://localhost:8000?keyword=${keyword}`);
     dispatch({ type: SUCCESS_GET_DATA, payload: data });
   } catch (error) {
     const message =

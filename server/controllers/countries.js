@@ -4,7 +4,16 @@ const countries = {};
 
 countries.GetAll = async (req, res) => {
   try {
-    const countries = await Countrie.find({});
+    const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i"
+        },
+    
+      }
+    : {};
+    const countries = await Countrie.find({ ...keyword });
     res.status(201).json(countries);
   } catch (error) {
     res.status(400).json({ message: "server interupted" });
